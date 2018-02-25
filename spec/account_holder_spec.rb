@@ -33,5 +33,11 @@ describe Account_holder do
     end
   end
 
+  describe '#get_lastname' do
+    it "should return the account holder's last name" do
+      expect(subject.get_lastname).to eq 'last'
+    end
+  end
+
 
 end

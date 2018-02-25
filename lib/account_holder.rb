@@ -14,4 +14,8 @@ class Account_holder
     @account_details['firstname']
   end
 
+  def get_lastname
+    @account_details['lastname']
+  end
+
 end
