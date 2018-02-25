@@ -6,5 +6,8 @@ class Account_holder
     @account_details = account_details
   end
 
+  def get_balance
+    @account_details['balance']
+  end
 
 end
