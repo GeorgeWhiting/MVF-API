@@ -21,9 +21,9 @@ describe Account_holder do
     end
   end
 
-  describe '#get_balance' do
+  describe '#display_balance' do
     it "should return the account's balance" do
-      expect(subject.get_balance).to eq '100.00'
+      expect(subject.display_balance).to eq '£100.00'
     end
   end
 

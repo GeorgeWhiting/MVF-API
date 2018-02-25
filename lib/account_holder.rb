@@ -6,8 +6,8 @@ class Account_holder
     @account_details = account_details
   end
 
-  def get_balance
-    @account_details['balance']
+  def display_balance
+    "£#{get_balance}"
   end
 
   def get_firstname
@@ -24,6 +24,12 @@ class Account_holder
 
   def get_phone_number
     @account_details['telephone']
+  end
+
+  private
+
+  def get_balance
+    @account_details['balance']
   end
 
 end
