@@ -29,7 +29,7 @@ describe Account_holder do
 
   describe '#show_account_details' do
     it "should return a list of the account holder's details" do
-      expect(subject.show_account_details).to eq "First Name: first\nLast Name: last\nEmail: test@test.com\nPhone: 0123456789\n"
+      expect(subject.show_account_details).to eq ['first', 'last', 'test@test.com', '0123456789']
     end
   end
 

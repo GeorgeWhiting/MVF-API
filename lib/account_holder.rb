@@ -11,7 +11,7 @@ class Account_holder
   end
 
   def show_account_details
-    "First Name: #{get_firstname}\nLast Name: #{get_lastname}\nEmail: #{get_email}\nPhone: #{get_phone_number}\n"
+    [get_firstname, get_lastname, get_email, get_phone_number]
   end
 
   private
