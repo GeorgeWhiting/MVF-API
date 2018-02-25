@@ -10,4 +10,8 @@ class Account_holder
     @account_details['balance']
   end
 
+  def get_firstname
+    @account_details['firstname']
+  end
+
 end
