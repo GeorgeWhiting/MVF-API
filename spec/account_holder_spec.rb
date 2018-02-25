@@ -27,29 +27,10 @@ describe Account_holder do
     end
   end
 
-  describe '#get_firstname' do
-    it "should return the account holder's first name" do
-      expect(subject.get_firstname).to eq 'first'
+  describe '#show_account_details' do
+    it "should return a list of the account holder's details" do
+      expect(subject.show_account_details).to eq "First Name: first\nLast Name: last\nEmail: test@test.com\nPhone: 0123456789\n"
     end
   end
-
-  describe '#get_lastname' do
-    it "should return the account holder's last name" do
-      expect(subject.get_lastname).to eq 'last'
-    end
-  end
-
-  describe '#get_email' do
-    it "should return the account holder's email address" do
-      expect(subject.get_email).to eq 'test@test.com'
-    end
-  end
-
-  describe '#get_phone_number' do
-    it "should return the account holder's phone number" do
-      expect(subject.get_phone_number).to eq '0123456789'
-    end
-  end
-
 
 end

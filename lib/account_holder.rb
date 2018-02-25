@@ -10,6 +10,16 @@ class Account_holder
     "£#{get_balance}"
   end
 
+  def show_account_details
+    "First Name: #{get_firstname}\nLast Name: #{get_lastname}\nEmail: #{get_email}\nPhone: #{get_phone_number}\n"
+  end
+
+  private
+
+  def get_balance
+    @account_details['balance']
+  end
+
   def get_firstname
     @account_details['firstname']
   end
@@ -24,12 +34,6 @@ class Account_holder
 
   def get_phone_number
     @account_details['telephone']
-  end
-
-  private
-
-  def get_balance
-    @account_details['balance']
   end
 
 end
