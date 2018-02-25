@@ -39,5 +39,17 @@ describe Account_holder do
     end
   end
 
+  describe '#get_email' do
+    it "should return the account holder's email address" do
+      expect(subject.get_email).to eq 'test@test.com'
+    end
+  end
+
+  describe '#get_phone_number' do
+    it "should return the account holder's phone number" do
+      expect(subject.get_phone_number).to eq '0123456789'
+    end
+  end
+
 
 end

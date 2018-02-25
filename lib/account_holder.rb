@@ -18,4 +18,12 @@ class Account_holder
     @account_details['lastname']
   end
 
+  def get_email
+    @account_details['email']
+  end
+
+  def get_phone_number
+    @account_details['telephone']
+  end
+
 end
