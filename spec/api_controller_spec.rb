@@ -9,4 +9,13 @@ describe Api_controller do
     end
   end
 
+  describe '#verify_user' do
+    it 'should return true if the entered guid matches an account guid' do
+      expect(subject.verify_user('50456415-4ea0-42b2-adae-063edce3225c')).to eq true
+    end
+    it 'should return false if the entered guid does not matche an account guid' do
+      expect(subject.verify_user('testguid')).to eq false
+    end
+  end
+
 end

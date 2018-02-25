@@ -9,4 +9,9 @@ class Api_controller
     @account_list = JSON.parse(file)['accounts']
   end
 
+  def verify_user(guid)
+    valid_accounts = @account_list.select{ |account| account['id'] == guid}
+    valid_accounts.length == 1
+  end
+
 end
