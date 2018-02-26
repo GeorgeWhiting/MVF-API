@@ -46,7 +46,11 @@ I want to get a list of accounts in debt
 
 As the customer
 So that I can contact them and talk about their account
-I want to get the name, email address, telephone and balance for an account 
+I want to get the name, email address, telephone and balance for an account
 
 ```
 ### Process
+
+The most important part to starting this task was to find a way to make JSON files readable. The 'json' gem converts JSON files to easily manipulable ruby hashes, and was an easy choice.
+
+A key part of the task was to make certain data only accessible to certain users. This is what influenced my decision to start development of the app by writing the method verify_user to take a guid as input and create an instance of either a Customer or AccountHolder class based on the guid entered. This way, account holders will only have access to the data stored in their particular instance of AccountHolder class. Having this method accept a customer guid for just the static input file is a bit redundant, but when the full AWS bucket is introduced it will make sense.
