@@ -26,7 +26,7 @@ Your API should expose the data according to the following rules:
 - ruby feature_testing.rb            #=> run the feature test file
 ```
 
-##### For IRB
+For IRB
 
 ```
 - follow above steps for setup
@@ -69,3 +69,7 @@ The most important part to starting this task was to find a way to make JSON fil
 A key part of the task was to make certain data only accessible to certain users. This is what influenced my decision to start development of the app by writing the method verify_user to take a guid as input and create an instance of either a Customer or AccountHolder class based on the guid entered. This way, account holders will only have access to the data stored in their particular instance of AccountHolder class.
 
 The http service gem I chose was 'httparty'. In order to test methods containing GET requests without relying on the bucket being online I chose to use the gem 'webmock'. Webmock works by stopping all requests making it out of the test code, instead supplying a response with customisable body, headers and status. I had to choose between this response being a json or being the raw code from the bucket; I chose json because of the reliance on parsing json at app startup. This meant stubbing the isolate_guids method to return the json file names in order for the parse_bucket test to work.
+
+### Test Coverage
+
+100%
