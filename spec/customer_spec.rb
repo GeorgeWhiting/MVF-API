@@ -30,6 +30,10 @@ describe Customer do
     end
   end
 
-  
+  describe '#get_accounts_in_debt' do
+    it 'should return an array of guids of accounts in debt' do
+      expect(subject.get_accounts_in_debt).to eq ['testguid2']
+    end
+  end
 
 end
