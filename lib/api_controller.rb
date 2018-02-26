@@ -23,7 +23,8 @@ class ApiController
 
   def verify_user(guid)
     if @customer_guids.include?(guid)
-      @customer = @customer_class.new(@account_list)
+      extract_customer_accounts(guid)
+      @customer = @customer_class.new(@customer_accounts)
       return
     end
     valid_accounts = @account_list.select { |account| account['id'] == guid }
