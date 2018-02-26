@@ -19,22 +19,35 @@ Your API should expose the data according to the following rules:
 
 ```
 - make sure to have ruby installed
-- gem install bundler #=> installs bundler gem
+- gem install bundler                #=> installs bundler gem
 - clone this repo
-- bundle #=> install gem dependencies
-- rspec #=> run all unit tests
-- ruby feature_testing.rb #=> run the feature test file
-TBC
+- bundle                             #=> install gem dependencies
+- rspec                              #=> run all unit tests
+- ruby feature_testing.rb            #=> run the feature test file
+```
+
+##### For IRB
+
+```
+- follow above steps for setup
+- irb                                                             #=> open ruby REPL
+- require_relative 'lib/api_controller'                           #=> load class files
+- ApiController.new                                               #=> Instantiate app controller
+- .verify_user(guid)                                              #=> enter a guid and explore the app!
+- customers and accounts referenced by calling
+ methods on customer or account variables                         #=> eg api.customer.accounts_in_debt
+- Customer features: .accounts_in_debt, .account_details(guid)
+- Account holder features: .display_balance, .show_account_details
 ```
 
 ### User Stories
 ```
-Section 1 - expose static data from a local file
+
+Data served dynamically from https://mvf-devtest-s3api.s3-eu-west-1.amazonaws.com/
 
 As an account holder
 So that I know how much money I have
 I want to check my balance
-
 
 As an account holder
 So that I can make sure the correct details are being stored
@@ -53,4 +66,6 @@ I want to get the name, email address, telephone and balance for an account
 
 The most important part to starting this task was to find a way to make JSON files readable. The 'json' gem converts JSON files to easily manipulable ruby hashes, and was an easy choice.
 
-A key part of the task was to make certain data only accessible to certain users. This is what influenced my decision to start development of the app by writing the method verify_user to take a guid as input and create an instance of either a Customer or AccountHolder class based on the guid entered. This way, account holders will only have access to the data stored in their particular instance of AccountHolder class. Having this method accept a customer guid for just the static input file is a bit redundant, but when the full AWS bucket is introduced it will make sense.
+A key part of the task was to make certain data only accessible to certain users. This is what influenced my decision to start development of the app by writing the method verify_user to take a guid as input and create an instance of either a Customer or AccountHolder class based on the guid entered. This way, account holders will only have access to the data stored in their particular instance of AccountHolder class.
+
+The http service gem I chose was 'httparty'. In order to test methods containing GET requests without relying on the bucket being online I chose to use the gem 'webmock'. Webmock works by stopping all requests making it out of the test code, instead supplying a response with customisable body, headers and status. I had to choose between this response being a json or being the raw code from the bucket; I chose json because of the reliance on parsing json at app startup. This meant stubbing the isolate_guids method to return the json file names in order for the parse_bucket test to work.
