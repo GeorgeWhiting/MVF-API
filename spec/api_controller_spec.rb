@@ -33,4 +33,12 @@ describe ApiController do
       expect(subject.verify_user('testguid')).to eq 'This guid does not exist'
     end
   end
+
+  describe '#extract_account_guids' do
+    it 'should populate the list of accounts with accounts from the entire bucket' do
+      subject.parse_bucket
+      subject.extract_account_guids
+      expect(subject.instance_variable_get(:@account_list).length).to eq 3
+    end
+  end
 end
