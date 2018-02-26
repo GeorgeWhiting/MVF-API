@@ -34,5 +34,8 @@ describe Customer do
     it "should return a list of the account's details" do
       expect(subject.account_details('testguid2')).to eq ['first2', 'last2', 'test2@test.com', '0987654321', '-100.00']
     end
+    it "should return nil if an invalid guid is used" do
+      expect(subject.account_details('testguid3')).to eq nil
+    end
   end
 end
