@@ -11,10 +11,7 @@ class ApiController
     @base_uri = 'https://mvf-devtest-s3api.s3-eu-west-1.amazonaws.com/'
     @account_class = account_class
     @customer_class = customer_class
-    @account = ''
-    @customer = ''
     @customer_guids = parse_bucket
-    @account_list = []
     extract_account_guids
   end
 
@@ -23,25 +20,30 @@ class ApiController
   end
 
   def verify_user(guid)
-    if @customer_guids.include?(guid)
-      @customer = @customer_class.new(extract_customer_accounts(guid))
-      return
-    end
-    valid_accounts = @account_list.select { |account| account['id'] == guid }
-    if !valid_accounts.empty?
-      @account = @account_class.new(valid_accounts.first)
-    else
-      'This guid does not exist'
-    end
+    return if verify_customer(guid)
+    return if verify_account_holder(guid)
+    'This guid does not exist'
   end
 
   def extract_account_guids
+    @account_list = []
     @customer_guids.each do |customer|
       @account_list += extract_customer_accounts(customer)
     end
   end
 
   private
+
+  def verify_customer(guid)
+    return unless @customer_guids.include?(guid)
+    @customer = @customer_class.new(extract_customer_accounts(guid))
+  end
+
+  def verify_account_holder(guid)
+    valid_accounts = @account_list.select { |account| account['id'] == guid }
+    return if valid_accounts.empty?
+    @account = @account_class.new(valid_accounts.first)
+  end
 
   def isolate_guids
     HTTParty.get(@base_uri).body.scan(%r{<Key>([^><]*)<\/Key>}).flatten
