@@ -17,7 +17,7 @@ class ApiController
   end
 
   def parse_bucket
-    @customer_guids = isolate_guids.map { |x| x.delete(".json") }
+    @customer_guids = isolate_guids.map { |x| x.delete('.json') }
   end
 
   def verify_user(guid)
@@ -42,7 +42,6 @@ class ApiController
   private
 
   def isolate_guids
-    HTTParty.get(@base_uri).body.scan(/<Key>([^><]*)<\/Key>/).flatten
+    HTTParty.get(@base_uri).body.scan(%r{<Key>([^><]*)<\/Key>}).flatten
   end
-
 end
