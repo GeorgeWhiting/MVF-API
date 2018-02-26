@@ -1,6 +1,4 @@
 require_relative 'lib/api_controller'
-require_relative 'lib/account_holder'
-require_relative 'lib/customer'
 
 api = ApiController.new
 

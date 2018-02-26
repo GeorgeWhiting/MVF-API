@@ -1,5 +1,7 @@
 require 'json'
 require 'httparty'
+require_relative 'customer'
+require_relative 'account_holder'
 
 class ApiController
   include HTTParty
