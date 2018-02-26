@@ -13,6 +13,7 @@ class ApiController
     @customer = ''
     @customer_guids = parse_bucket
     @account_list = []
+    @customer_accounts = []
     extract_account_guids
   end
 
@@ -37,6 +38,10 @@ class ApiController
     @customer_guids.each do |customer|
       @account_list += JSON.parse(self.class.get("#{@base_uri}#{customer}.json"))['accounts']
     end
+  end
+
+  def extract_customer_accounts(guid)
+    @customer_accounts = JSON.parse(self.class.get("#{@base_uri}#{guid}.json"))['accounts']
   end
 
   private

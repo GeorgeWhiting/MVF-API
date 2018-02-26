@@ -41,4 +41,12 @@ describe ApiController do
       expect(subject.instance_variable_get(:@account_list).length).to eq 3
     end
   end
+
+  describe '#extract_customer_accounts' do
+    it 'should populate the list of accounts with accounts from just the selected customer' do
+      subject.parse_bucket
+      subject.extract_customer_accounts('a4a06bb0-3fbe-40bd-9db2-f68354ba742f')
+      expect(subject.instance_variable_get(:@customer_accounts).length).to eq 1
+    end
+  end
 end
