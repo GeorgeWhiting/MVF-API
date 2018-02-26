@@ -13,7 +13,6 @@ class ApiController
     @customer = ''
     @customer_guids = parse_bucket
     @account_list = []
-    @customer_accounts = []
     extract_account_guids
   end
 
@@ -23,8 +22,7 @@ class ApiController
 
   def verify_user(guid)
     if @customer_guids.include?(guid)
-      extract_customer_accounts(guid)
-      @customer = @customer_class.new(@customer_accounts)
+      @customer = @customer_class.new(extract_customer_accounts(guid))
       return
     end
     valid_accounts = @account_list.select { |account| account['id'] == guid }
@@ -37,17 +35,17 @@ class ApiController
 
   def extract_account_guids
     @customer_guids.each do |customer|
-      @account_list += JSON.parse(self.class.get("#{@base_uri}#{customer}.json"))['accounts']
+      @account_list += extract_customer_accounts(customer)
     end
-  end
-
-  def extract_customer_accounts(guid)
-    @customer_accounts = JSON.parse(self.class.get("#{@base_uri}#{guid}.json"))['accounts']
   end
 
   private
 
   def isolate_guids
     HTTParty.get(@base_uri).body.scan(%r{<Key>([^><]*)<\/Key>}).flatten
+  end
+
+  def extract_customer_accounts(guid)
+    JSON.parse(self.class.get("#{@base_uri}#{guid}.json"))['accounts']
   end
 end
