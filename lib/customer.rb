@@ -14,7 +14,7 @@ class Customer
   end
 
   def account_details(guid)
-    account = @accounts.select {|s| s['id'].include?(guid)}[0]
+    account = @accounts.select { |account| account['id'].include?(guid) }[0]
     return if account.nil?
     [account['firstname'], account['lastname'], account['email'], account['telephone'], account['balance']]
   end
