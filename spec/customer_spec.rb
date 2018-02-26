@@ -23,5 +23,13 @@ describe Customer do
     end
   end
 
+  describe '#account_in_debt?' do
+    it 'should return true if the account has a negative balance' do
+      expect(subject.account_in_debt?(subject.accounts[1])).to eq true
+      expect(subject.account_in_debt?(subject.accounts[0])).to eq false
+    end
+  end
+
+  
 
 end
