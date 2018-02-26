@@ -1,10 +1,9 @@
 require 'json'
 
-class Api_controller
-
+class ApiController
   attr_reader :account_list, :account
 
-  def initialize(account_class = Account_holder)
+  def initialize(account_class = AccountHolder)
     @account_class = account_class
     @account = ''
 
@@ -13,12 +12,11 @@ class Api_controller
   end
 
   def verify_user(guid)
-    valid_accounts = @account_list.select{ |account| account['id'] == guid}
+    valid_accounts = @account_list.select { |account| account['id'] == guid }
     if valid_accounts.length == 1
       @account = @account_class.new(valid_accounts.first)
     else
       'This guid does not exist'
     end
   end
-
 end

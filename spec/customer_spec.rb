@@ -1,20 +1,21 @@
 describe Customer do
-
   test_data = [{
-    "id" => "testguid1",
-    "firstname" => "first1",
-    "lastname" => "last1",
-    "email" => "test1@test.com",
-    "telephone" => "0123456789",
-    "balance" => "100.00"}, {
-      "id" => "testguid2",
-      "firstname" => "first2",
-      "lastname" => "last2",
-      "email" => "test2@test.com",
-      "telephone" => "0987654321",
-      "balance" => "-100.00"}]
+    'id' => 'testguid1',
+    'firstname' => 'first1',
+    'lastname' => 'last1',
+    'email' => 'test1@test.com',
+    'telephone' => '0123456789',
+    'balance' => '100.00'
+  }, {
+    'id' => 'testguid2',
+    'firstname' => 'first2',
+    'lastname' => 'last2',
+    'email' => 'test2@test.com',
+    'telephone' => '0987654321',
+    'balance' => '-100.00'
+  }]
 
-  subject {described_class.new(test_data)}
+  subject { described_class.new(test_data) }
 
   describe '#accounts' do
     it 'should be initialized with an array of accounts' do
@@ -23,15 +24,15 @@ describe Customer do
     end
   end
 
-  describe '#get_accounts_in_debt' do
+  describe '#accounts_in_debt' do
     it 'should return an array of guids of accounts in debt' do
-      expect(subject.get_accounts_in_debt).to eq ['testguid2']
+      expect(subject.accounts_in_debt).to eq ['testguid2']
     end
   end
 
-  describe '#get_account_details' do
+  describe '#account_details' do
     it "should return a list of the account's details" do
-      expect(subject.get_account_details('testguid2')).to eq ['first2', 'last2', 'test2@test.com', '0987654321', '-100.00']
+      expect(subject.account_details('testguid2')).to eq ['first2', 'last2', 'test2@test.com', '0987654321', '-100.00']
     end
   end
 end

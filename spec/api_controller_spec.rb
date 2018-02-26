@@ -1,6 +1,5 @@
-describe Api_controller do
-
-  subject {described_class.new(account_class)}
+describe ApiController do
+  subject { described_class.new(account_class) }
 
   let(:account_holder) { double(:account_holder, display_balance: '100.00') }
   let(:account_class) { double(:account_class, new: account_holder) }
@@ -22,6 +21,4 @@ describe Api_controller do
       expect(subject.verify_user('testguid')).to eq 'This guid does not exist'
     end
   end
-
-
 end

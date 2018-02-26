@@ -1,5 +1,4 @@
-describe Account_holder do
-
+describe AccountHolder do
   test_details = {
     'id' => 'testguid',
     'firstname' => 'first',
@@ -8,7 +7,7 @@ describe Account_holder do
     'telephone' => '0123456789',
     'balance' => '100.00'
   }
-  subject {described_class.new(test_details)}
+  subject { described_class.new(test_details) }
 
   # describe '#account_details' do
   #   it 'should be initialized with a hash of details' do
@@ -32,5 +31,4 @@ describe Account_holder do
       expect(subject.show_account_details).to eq ['first', 'last', 'test@test.com', '0123456789']
     end
   end
-
 end
