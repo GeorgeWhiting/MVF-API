@@ -16,9 +16,7 @@ class Customer
 
   def get_account_details(guid)
     @accounts.each do |account|
-      if account['id'] == guid
-        return [account['firstname'], account['lastname'], account['email'], account['telephone'], account['balance']]
-      end
+      if !(details = return_account_details_if_valid(guid, account)).nil? then return details end
     end
   end
 
@@ -26,6 +24,12 @@ class Customer
 
   def account_in_debt?(account)
     account['balance'].to_f <= 0
+  end
+
+  def return_account_details_if_valid(guid, account)
+    if account['id'] == guid
+      [account['firstname'], account['lastname'], account['email'], account['telephone'], account['balance']]
+    end
   end
 
 end

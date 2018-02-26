@@ -31,7 +31,7 @@ describe Customer do
 
   describe '#get_account_details' do
     it "should return a list of the account's details" do
-      expect(subject.get_account_details('testguid1')).to eq ['first1', 'last1', 'test1@test.com', '0123456789', '100.00']
+      expect(subject.get_account_details('testguid2')).to eq ['first2', 'last2', 'test2@test.com', '0987654321', '-100.00']
     end
   end
 end
