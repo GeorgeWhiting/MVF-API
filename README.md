@@ -12,7 +12,7 @@ Each guid (globally unique identifier) represents a customer with access to the 
 
 Your API should expose the data according to the following rules:
 
-- Users with knowledge of a customer guid (Customers) may search the json file named with the guid and may have access to all it's contents.
+- Users with knowledge of a customer guid (Customers) may search the json file named with the guid and may have access to all its contents.
 - Users with knowledge of an account guid (Account Holders) may have access to any of the data for that account, but not anything else within the same file.
 
 ### How to Use
