@@ -18,8 +18,12 @@ Your API should expose the data according to the following rules:
 ### How to Use
 
 ```
+- make sure to have ruby installed
+- gem install bundler #=> installs bundler gem
 - clone this repo
 - bundle #=> install gem dependencies
+- rspec #=> run all unit tests
+- ruby feature_testing.rb #=> run the feature test file
 TBC
 ```
 
@@ -28,13 +32,21 @@ TBC
 Section 1 - expose static data from a local file
 
 As an account holder
-so that I know how much money I have
+So that I know how much money I have
 I want to check my balance
 
 
 As an account holder
-so that I can make sure the correct details are being stored
+So that I can make sure the correct details are being stored
 I want to check the details being held about me
+
+As the customer
+So that I can assess them for overdraft interest
+I want to get a list of accounts in debt
+
+As the customer
+So that I can contact them and talk about their account
+I want to get the name, email address, telephone and balance for an account 
 
 ```
 ### Process
