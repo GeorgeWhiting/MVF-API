@@ -3,7 +3,7 @@ require 'httparty'
 
 class ApiController
   include HTTParty
-  attr_reader :account, :customer, :account_list
+  attr_reader :account, :customer
 
   def initialize(account_class = AccountHolder, customer_class = Customer)
     @base_uri = 'https://mvf-devtest-s3api.s3-eu-west-1.amazonaws.com/'
