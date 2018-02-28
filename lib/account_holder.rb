@@ -4,32 +4,16 @@ class AccountHolder
   end
 
   def display_balance
-    "£#{find_account_balance}"
+    "£#{find_account_detail('balance')}"
   end
 
   def show_account_details
-    [find_account_firstname, find_account_lastname, find_account_email, find_account_phone_number]
+    [find_account_detail('firstname'), find_account_detail('lastname'), find_account_detail('email'), find_account_detail('telephone')]
   end
 
   private
 
-  def find_account_balance
-    @account_details['balance']
-  end
-
-  def find_account_firstname
-    @account_details['firstname']
-  end
-
-  def find_account_lastname
-    @account_details['lastname']
-  end
-
-  def find_account_email
-    @account_details['email']
-  end
-
-  def find_account_phone_number
-    @account_details['telephone']
+  def find_account_detail(detail)
+    @account_details[detail]
   end
 end
